@@ -17,17 +17,24 @@ const animalData = [
 ];
 
 const LabelFilter = () => {
-  const [animalBreed, setAnimalBreed] = useState(animalData);
+  const [selectedClasses, setSelectedClasses] = useState([]);
+
   const animalClasses = Array.from(
     new Set(animalData.map((animal) => animal.class))
   );
 
   const handleClick = (animalClass) => {
-    const filteredAnimals = animalData.filter(
-      (animal) => animal.class === animalClass
+    setSelectedClasses((prev) =>
+      prev.includes(animalClass)
+        ? prev.filter((cls) => cls !== animalClass)
+        : [...prev, animalClass]
     );
-    setAnimalBreed(filteredAnimals);
   };
+
+  const filteredAnimals =
+    selectedClasses.length === 0
+      ? animalData
+      : animalData.filter((animal) => selectedClasses.includes(animal.class));
 
   return (
     <Wrapper>
@@ -38,20 +45,19 @@ const LabelFilter = () => {
             className="label"
             key={animalClass}
             onClick={() => handleClick(animalClass)}
+            style={{
+              backgroundColor: selectedClasses.includes(animalClass)
+                ? "#333"
+                : "#fff",
+              color: selectedClasses.includes(animalClass) ? "#fff" : "#333",
+            }}
           >
             {animalClass}
           </div>
         ))}
-        <div
-          data-testid="label-id"
-          className="label"
-          onClick={() => setAnimalBreed(animalData)}
-        >
-          All
-        </div>
       </div>
       <div data-testid="tile-container-id" className="tile-container">
-        {animalBreed.map((animal) => (
+        {filteredAnimals.map((animal) => (
           <div data-testid="animal-tile-id" className="tile" key={animal.name}>
             {animal.name}
           </div>
@@ -73,6 +79,7 @@ const Wrapper = styled.div`
 
   .label-container {
     display: flex;
+    flex-direction: row;
     gap: 12px;
 
     .label {
@@ -80,6 +87,7 @@ const Wrapper = styled.div`
       color: #333;
       border: 1px solid #333;
       border-radius: 4px;
+      margin-bottom: 8px;
       padding: 6px 12px;
       cursor: pointer;
       transition: 0.1s ease-in-out;
@@ -92,6 +100,7 @@ const Wrapper = styled.div`
 
   .tile-container {
     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
 
