@@ -7,6 +7,7 @@ const UserForm = () => {
     dob: "",
     gender: "",
     qualification: "",
+    maritalStatus: "",
     address: "",
   });
 
@@ -119,6 +120,25 @@ const UserForm = () => {
             <option value="Graduate">Graduate</option>
             <option value="Postgraduate">Postgraduate</option>
             <option value="Doctorate">Doctorate</option>
+          </select>
+        </div>
+
+        {/* Marital Status */}
+        <div>
+          <label>Marital Status:</label>
+          <select
+            name="maritalStatus"
+            value={formData.maritalStatus}
+            onChange={handleChange}
+            required
+          >
+            <option value="" disabled>
+              Select marital status
+            </option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Widowed">Widowed</option>
           </select>
         </div>
 
