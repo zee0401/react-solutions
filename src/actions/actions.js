@@ -15,5 +15,5 @@ export async function userFormAction({ request }) {
 
   console.log("Form Submitted Data:", data);
 
-  return redirect("/thank-you"); // Redirect to a success page after submission
+  return redirect("/thank-you");
 }
