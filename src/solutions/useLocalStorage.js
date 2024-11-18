@@ -15,4 +15,17 @@ const useLocalStorage = (key, defaultValue) => {
       return defaultValue;
     }
   });
+
+  const setLocalStorage = (valueORFunc) => {
+    let newValue;
+    if (typeof valueORFunc === "function") {
+      newValue = valueORFunc(localStorageValue);
+    } else {
+      newValue = valueORFunc;
+    }
+    localStorage.setItem(key, JSON.stringify(newValue));
+    setLocalStorageValue(newValue);
+  };
+  return [localStorageValue, setLocalStorage];
 };
+export default useLocalStorage;
