@@ -13,6 +13,11 @@ const Form = () => {
 
   const [errors, setErrors] = useState({});
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
