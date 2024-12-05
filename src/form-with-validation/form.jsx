@@ -18,6 +18,37 @@ const Form = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.username) newErrors.username = "Username is required";
+
+    if (!formData.email) newErrors.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(formData.email))
+      newErrors.email = "Invalid email format";
+
+    if (!formData.phone) newErrors.phone = "Phone number is required";
+    else if (!/^\d{10}$/.test(formData.phone))
+      newErrors.phone = "Phone number must be 10 digits";
+
+    if (!formData.gender) newErrors.gender = "Gender is required";
+
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    }
+
+    if (!formData.confirmPassword) {
+      newErrors.confirmPassword = "Please confirm your password";
+    } else if (
+      formData.password.toString().trim() !==
+      formData.confirmPassword.toString().trim()
+    ) {
+      newErrors.confirmPassword = "Passwords do not match";
+    }
+
+    return newErrors;
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
