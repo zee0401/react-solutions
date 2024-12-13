@@ -4,6 +4,26 @@ import Comments from "./components/Comments";
 import "./app.css";
 
 function App() {
+  const [input, setInput] = useState("");
+  const [comments, setComments] = useState([
+    {
+      id: 2,
+      body: "2nd comment",
+      children: [
+        {
+          id: 3,
+          body: "3rd comment",
+          children: [{ id: 10, body: "10th comment", children: [] }],
+        },
+      ],
+    },
+    {
+      id: 4,
+      body: "4th comment",
+      children: [],
+    },
+  ]);
+
   return (
     <>
       <div className="input">
