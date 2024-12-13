@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./app.css";
-import Comments from "./components/Comments";
+import Comments from "./comments";
 import "./app.css";
 
 function App() {
