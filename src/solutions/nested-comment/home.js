@@ -24,6 +24,21 @@ function App() {
     },
   ]);
 
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newComments = {
+      id: Date.now(),
+      body: input,
+      children: { comments },
+    };
+    setComments((prevComment) => [...prevComment, newComments]);
+    console.log(comments);
+  };
+
   return (
     <>
       <div className="input">
