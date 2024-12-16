@@ -25,7 +25,7 @@ const Comments = ({ comment }) => {
 
       <div className="contain">
         {getReply ? (
-          <div className="reply-input" inputRef>
+          <div className="reply-input" ref={inputRef}>
             <input ref={inputRef} />
             <button className="btn"> add reply</button>
           </div>
