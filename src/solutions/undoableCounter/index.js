@@ -1,5 +1,5 @@
-import logo from "./logo.svg";
-import "./App.css";
+/* eslint-disable react/jsx-key */
+
 import { useState } from "react";
 
 function App() {
@@ -82,7 +82,7 @@ function App() {
       <div className="history">
         {history.map((item) => {
           return (
-            <div className="row">
+            <div key={item.id} className="row">
               <div>{item.action}</div>
               <div>{`[ ${item.prev} -> ${item.curr} ]`}</div>
             </div>
