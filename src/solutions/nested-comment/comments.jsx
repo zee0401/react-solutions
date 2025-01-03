@@ -28,6 +28,7 @@ const Comments = ({ comment }) => {
           <div className="reply-input" ref={inputRef}>
             <input ref={inputRef} />
             <button className="btn"> add reply</button>
+            <button className="btn"> Cancle</button>
           </div>
         ) : null}
         {comment.children && comment.children.length > 0 ? (
