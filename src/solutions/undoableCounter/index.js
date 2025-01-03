@@ -3,6 +3,11 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
+  const [value, setValue] = useState(0);
+  const [redoList, setRedoList] = useState([]);
+  const [history, setHistory] = useState([]);
+  const [undoCount, setUndoCount] = useState(0);
+
   return (
     <div className="App">
       <h1>Undoable Counter</h1>
