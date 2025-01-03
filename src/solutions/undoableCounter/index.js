@@ -8,10 +8,22 @@ function App() {
   const [history, setHistory] = useState([]);
   const [undoCount, setUndoCount] = useState(0);
 
+  const maintainHistory = (key, prev, curr) => {
+    console.log(key, prev, curr);
+    const obj = {
+      action: key,
+      prev,
+      curr,
+    };
+    const copyHistory = [...history];
+    copyHistory.unshift(obj); //
+    setHistory(copyHistory);
+  };
+
   const handleClick = (key) => {
     const val = parseInt(key);
     console.log(key);
-    // maintainHistory(key, value, val + value);
+    maintainHistory(key, value, val + value);
     setValue((existingValue) => existingValue + val);
   };
 
