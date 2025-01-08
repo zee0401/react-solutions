@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+import "./style.css";
 import { useEffect } from "react";
 import debouceQuery from "./utils";
 
