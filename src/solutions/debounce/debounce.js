@@ -11,6 +11,17 @@ function App() {
   };
   console.log(input);
 
+  const initAPICall = async () => {
+    const url = `https://api.frontendeval.com/fake/food/${input}`;
+    const data = await debouceQuery(url);
+    setList(data);
+  };
+  useEffect(() => {
+    if (input) {
+      initAPICall();
+    }
+  }, [input]);
+
   // [0, 100, 200, 300, 50, 1000]
   return (
     <div className="App">
