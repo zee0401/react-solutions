@@ -1,6 +1,16 @@
+import { useState } from "react";
 import "./App.css";
+import { useEffect } from "react";
+import debouceQuery from "./utils";
 
 function App() {
+  const [input, setInput] = useState("");
+  const [list, setList] = useState([]);
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+  };
+  console.log(input);
+
   // [0, 100, 200, 300, 50, 1000]
   return (
     <div className="App">
