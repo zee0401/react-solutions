@@ -15,29 +15,46 @@ const address = {
 };
 
 const Tabs = () => {
+  const [activeTab, setActiveTab] = useState("person-tab");
+
+  const handleClick = (e) => {
+    const target = e.target.dataset.testid;
+    setActiveTab(target);
+  };
+
   return (
     <Container>
       <TabList>
-        <Tab data-testid="person-tab" onClick={handleClick}>
+        <Tab
+          data-testid="person-tab"
+          onClick={handleClick}
+          active={activeTab === "person-tab"}
+        >
           Person
         </Tab>
-        <Tab data-testid="address-tab" onClick={handleClick}>
+        <Tab
+          data-testid="address-tab"
+          onClick={handleClick}
+          active={activeTab === "address-tab"}
+        >
           Address
         </Tab>
       </TabList>
       <TabContent>
-        <PersonContainer data-testid="person-container">
-          <p>Name: {person.name}</p>
-          <p>Age: {person.age}</p>
-          <p>Occupation: {person.occupation}</p>
-        </PersonContainer>
-
-        <AddressContainer data-testid="address-container">
-          <p>Street: {address.street}</p>
-          <p>City: {address.city}</p>
-          <p>State: {address.state}</p>
-          <p>Zip: {address.zip}</p>
-        </AddressContainer>
+        {activeTab === "person-tab" ? (
+          <PersonContainer data-testid="person-container">
+            <p>Name: {person.name}</p>
+            <p>Age: {person.age}</p>
+            <p>Occupation: {person.occupation}</p>
+          </PersonContainer>
+        ) : (
+          <AddressContainer data-testid="address-container">
+            <p>Street: {address.street}</p>
+            <p>City: {address.city}</p>
+            <p>State: {address.state}</p>
+            <p>Zip: {address.zip}</p>
+          </AddressContainer>
+        )}
       </TabContent>
     </Container>
   );
