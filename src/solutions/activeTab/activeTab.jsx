@@ -18,18 +18,10 @@ const Tabs = () => {
   return (
     <Container>
       <TabList>
-        <Tab
-          data-testid="person-tab"
-          onClick={handleClick}
-          active={activeTab === "person-tab"}
-        >
+        <Tab data-testid="person-tab" onClick={handleClick}>
           Person
         </Tab>
-        <Tab
-          data-testid="address-tab"
-          onClick={handleClick}
-          active={activeTab === "address-tab"}
-        >
+        <Tab data-testid="address-tab" onClick={handleClick}>
           Address
         </Tab>
       </TabList>
