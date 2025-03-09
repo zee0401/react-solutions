@@ -11,12 +11,18 @@ const Accordian = () => {
         setSelectedItem(multiSelect ? multiSelectData : selectedId);
     };
 
-    const handleMultiSelect = (multiId) => {
-        setMultiSelectData((prevSelected) =>
-            prevSelected.includes(multiId)
-                ? prevSelected.filter((id) => id !== multiId)
-                : [...prevSelected, multiId]
-        );
+    const handleMultiSelect = (selectedId) => {
+        const copymultiSelectData = [...multiSelectData];
+
+        if (copymultiSelectData.includes(selectedId)) {
+            const filter = copymultiSelectData.filter(
+                (item) => item !== selectedId
+            );
+            setMultiSelectData(filter);
+        } else {
+            copymultiSelectData.push(selectedId);
+            setMultiSelectData(copymultiSelectData);
+        }
     };
 
     return (
