@@ -26,6 +26,16 @@ const ImageSlider = ({ url, page, limit }) => {
         }
     }, [url]);
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImage((prev) =>
+                prev === images.length - 1 ? 0 : prev + 1
+            );
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, [images.length]);
+
     if (loading) {
         return <div> Loading</div>;
     }

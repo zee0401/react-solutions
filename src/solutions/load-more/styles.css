@@ -1,0 +1,22 @@
+.img-container {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.img-box {
+    margin-left: 30px;
+    margin-top: 30px;
+    border: 1px solid black;
+}
+
+.load-more {
+    padding: 10px;
+    margin-top: 20px;
+    width: 100px;
+    background-color: aqua;
+    cursor: pointer;
+    margin-left: 46%;
+}
