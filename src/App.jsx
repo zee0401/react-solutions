@@ -1,7 +1,9 @@
 // import Accordian from "./solutions/accordian/accordian";
 // import Star from "./solutions/star/star";
 // import ImageSlider from "./solutions/image-slider/ImageSlider";
-import LoadMore from "./solutions/load-more/load-more";
+// import LoadMore from "./solutions/load-more/load-more";
+
+import TreeView from "./solutions/tree-view/TreeView";
 
 const App = () => {
     return (
@@ -14,7 +16,8 @@ const App = () => {
                 limit={"10"}
             /> */}
 
-            <LoadMore />
+            {/* <LoadMore /> */}
+            <TreeView />
         </>
     );
 };
