@@ -3,7 +3,8 @@
 // import ImageSlider from "./solutions/image-slider/ImageSlider";
 // import LoadMore from "./solutions/load-more/load-more";
 
-import TreeView from "./solutions/tree-view/TreeView";
+// import TreeView from "./solutions/tree-view/TreeView";
+import Tabs from "./solutions/tabs/Tabs";
 
 const App = () => {
     return (
@@ -17,7 +18,8 @@ const App = () => {
             /> */}
 
             {/* <LoadMore /> */}
-            <TreeView />
+            {/* <TreeView /> */}
+            <Tabs />
         </>
     );
 };

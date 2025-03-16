@@ -11,7 +11,7 @@ const MenuItem = ({ listItem }) => {
             [id]: !showChildren[id],
         });
     };
-    console.log(showChildren);
+
     return (
         <div>
             <ul>
