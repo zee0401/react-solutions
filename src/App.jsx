@@ -3,8 +3,10 @@
 // import ImageSlider from "./solutions/image-slider/ImageSlider";
 // import LoadMore from "./solutions/load-more/load-more";
 
+import TicTacToe from "./solutions/tictactoe/TicTacToe";
+
 // import TreeView from "./solutions/tree-view/TreeView";
-import Tabs from "./solutions/tabs/Tabs";
+// import Tabs from "./solutions/tabs/Tabs";
 
 const App = () => {
     return (
@@ -19,7 +21,8 @@ const App = () => {
 
             {/* <LoadMore /> */}
             {/* <TreeView /> */}
-            <Tabs />
+            {/* <Tabs /> */}
+            <TicTacToe />
         </>
     );
 };
