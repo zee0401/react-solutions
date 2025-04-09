@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useDispatch } from "react-redux";
 import "./CartTile.css";
-import { removeFromCart } from "../cartSlice/cartSlice";
+import { decreaseQuantity } from "../cartSlice/cartSlice";
 
 export default function CartTile({ cartItem }) {
     const dispatch = useDispatch();
 
     const handleRemove = () => {
-        dispatch(removeFromCart(cartItem.id));
+        dispatch(decreaseQuantity(cartItem.id));
     };
 
     return (
@@ -22,7 +22,7 @@ export default function CartTile({ cartItem }) {
                     <h1>{cartItem?.title}</h1>
                     <p>${cartItem?.price}</p>
                     <p className="quantity">
-                        Item Quantity:<span> 2</span>
+                        Item Quantity:<span> {cartItem.quantity}</span>
                     </p>
                 </div>
             </div>

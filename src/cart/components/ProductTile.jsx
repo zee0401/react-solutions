@@ -1,19 +1,12 @@
-/* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from "react-redux";
 import "./ProductTile.css";
-import { addToCart, removeFromCart } from "../cartSlice/cartSlice";
+import { addToCart, decreaseQuantity } from "../cartSlice/cartSlice";
 
 export default function ProductTile({ product }) {
     const { cart } = useSelector((state) => state);
     const dispatch = useDispatch();
 
-    const handleClick = () => {
-        dispatch(addToCart(product));
-    };
-
-    const handleRemove = () => {
-        dispatch(removeFromCart(product.id));
-    };
+    const cartItem = cart.find((item) => item.id === product.id);
 
     return (
         <div className="product-tile">
@@ -25,10 +18,26 @@ export default function ProductTile({ product }) {
                     <h1 title={product?.title}>{product?.title}</h1>
                 </div>
                 <div className="product-action">
-                    {cart.some((item) => item.id === product?.id) ? (
-                        <button onClick={handleRemove}>Remove from Cart</button>
+                    {cartItem ? (
+                        <div className="quantity-controls">
+                            <button
+                                onClick={() =>
+                                    dispatch(decreaseQuantity(product.id))
+                                }
+                            >
+                                -
+                            </button>
+                            <span>{cartItem.quantity}</span>
+                            <button
+                                onClick={() => dispatch(addToCart(product))}
+                            >
+                                +
+                            </button>
+                        </div>
                     ) : (
-                        <button onClick={handleClick}>Add to Cart</button>
+                        <button onClick={() => dispatch(addToCart(product))}>
+                            Add to Cart
+                        </button>
                     )}
                 </div>
             </div>
