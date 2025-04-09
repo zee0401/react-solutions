@@ -14,7 +14,7 @@ export default function Cart() {
     useEffect(() => {
         setItemCost(
             cart.reduce((acc, item) => {
-                return acc + item.price;
+                return acc + item.price * item.quantity;
             }, 0)
         );
     }, [cart]);

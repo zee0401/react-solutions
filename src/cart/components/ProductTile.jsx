@@ -1,10 +1,15 @@
+/* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from "react-redux";
+import {
+    addToCart,
+    incrementQuantity,
+    decrementQuantity,
+} from "../cartSlice/cartSlice";
 import "./ProductTile.css";
-import { addToCart, decreaseQuantity } from "../cartSlice/cartSlice";
 
 export default function ProductTile({ product }) {
-    const { cart } = useSelector((state) => state);
     const dispatch = useDispatch();
+    const { cart } = useSelector((state) => state);
 
     const cartItem = cart.find((item) => item.id === product.id);
 
@@ -19,17 +24,19 @@ export default function ProductTile({ product }) {
                 </div>
                 <div className="product-action">
                     {cartItem ? (
-                        <div className="quantity-controls">
+                        <div className="qty-controls">
                             <button
                                 onClick={() =>
-                                    dispatch(decreaseQuantity(product.id))
+                                    dispatch(decrementQuantity(product.id))
                                 }
                             >
                                 -
                             </button>
                             <span>{cartItem.quantity}</span>
                             <button
-                                onClick={() => dispatch(addToCart(product))}
+                                onClick={() =>
+                                    dispatch(incrementQuantity(product.id))
+                                }
                             >
                                 +
                             </button>

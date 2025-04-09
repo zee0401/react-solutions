@@ -54,3 +54,20 @@
 .quantity span {
     color: white;
 }
+
+.quantity-control button {
+    padding: 4px 10px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}

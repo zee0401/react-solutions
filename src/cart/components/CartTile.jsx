@@ -1,14 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useDispatch } from "react-redux";
-import "./CartTile.css";
-import { decreaseQuantity } from "../cartSlice/cartSlice";
+import { decrementQuantity, incrementQuantity } from "../cartSlice/cartSlice";
+import "./cartTile.css";
 
 export default function CartTile({ cartItem }) {
     const dispatch = useDispatch();
-
-    const handleRemove = () => {
-        dispatch(decreaseQuantity(cartItem.id));
-    };
 
     return (
         <div className="cart-tile">
@@ -21,15 +17,24 @@ export default function CartTile({ cartItem }) {
                 <div className="cart-details">
                     <h1>{cartItem?.title}</h1>
                     <p>${cartItem?.price}</p>
-                    <p className="quantity">
-                        Item Quantity:<span> {cartItem.quantity}</span>
-                    </p>
+                    <div className="quantity-control">
+                        <button
+                            onClick={() =>
+                                dispatch(decrementQuantity(cartItem.id))
+                            }
+                        >
+                            -
+                        </button>
+                        <span>{cartItem.quantity}</span>
+                        <button
+                            onClick={() =>
+                                dispatch(incrementQuantity(cartItem.id))
+                            }
+                        >
+                            +
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div className="cart-actions">
-                <button className="remove-btn" onClick={handleRemove}>
-                    Remove From Cart
-                </button>
             </div>
         </div>
     );
