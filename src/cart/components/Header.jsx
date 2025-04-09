@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export default function Header() {
+    const { cart } = useSelector((state) => state);
+
+    useEffect(() => {
+        console.log(cart);
+    }, [cart]);
+
     return (
         <div className="header">
             <nav className="navbar">
@@ -15,7 +23,7 @@ export default function Header() {
                         <Link to={"/"}>Home</Link>
                     </li>
                     <li>
-                        <Link to={"/cart"}>Cart</Link>
+                        <Link to={"/cart"}>Cart: {cart.length} </Link>
                     </li>
                 </ul>
             </nav>
