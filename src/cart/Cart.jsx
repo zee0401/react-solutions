@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-// import CartTile from "../components/cart-tile";
 import "./styles.css";
 import CartTile from "./components/CartTile";
 
 export default function Cart() {
+    const [totalCost, setItemCost] = useState(0);
+
     const { cart } = useSelector((state) => state);
 
     console.log(cart, "cart items");
+
+    useEffect(() => {
+        setItemCost(
+            cart.reduce((acc, item) => {
+                return acc + item.price;
+            }, 0)
+        );
+    }, [cart]);
 
     return (
         <div className="cart-container">
@@ -30,7 +39,7 @@ export default function Cart() {
                             </p>
                             <p>
                                 <span>Total Amount</span>
-                                <span>: </span>
+                                <span>:{totalCost} </span>
                             </p>
                         </div>
                     </div>

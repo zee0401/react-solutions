@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from "react-redux";
 import "./ProductTile.css";
-import { addToCart } from "../cartSlice/cartSlice";
+import { addToCart, removeFromCart } from "../cartSlice/cartSlice";
 
 export default function ProductTile({ product }) {
     const { cart } = useSelector((state) => state);
@@ -11,7 +11,9 @@ export default function ProductTile({ product }) {
         dispatch(addToCart(product));
     };
 
-    const handleRemove = () => {};
+    const handleRemove = () => {
+        dispatch(removeFromCart(product.id));
+    };
 
     return (
         <div className="product-tile">
