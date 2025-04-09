@@ -1,4 +1,7 @@
+/* eslint-disable react/jsx-key */
 import React, { useEffect, useState } from "react";
+import "./styles.css";
+import ProductTile from "./components/ProductTile";
 
 const CartHome = () => {
     const [loading, setLoading] = useState(true);
@@ -20,7 +23,24 @@ const CartHome = () => {
     useEffect(() => {
         getItems();
     }, []);
-    return <div></div>;
+
+    return (
+        <div>
+            {loading ? (
+                <div className="loader-container">
+                    <h1>Loading....</h1>
+                </div>
+            ) : (
+                <div className="product-grid">
+                    {products && products.length
+                        ? products.map((product) => (
+                              <ProductTile product={product} />
+                          ))
+                        : null}
+                </div>
+            )}
+        </div>
+    );
 };
 
 export default CartHome;
