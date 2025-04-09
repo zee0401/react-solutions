@@ -3,7 +3,10 @@
 // import ImageSlider from "./solutions/image-slider/ImageSlider";
 // import LoadMore from "./solutions/load-more/load-more";
 
+import Cart from "./cart/Cart";
 import CartHome from "./cart/CartHome";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./cart/components/Header";
 // import TicTacToe from "./solutions/tictactoe/TicTacToe";
 
 // import TreeView from "./solutions/tree-view/TreeView";
@@ -24,7 +27,13 @@ const App = () => {
             {/* <TreeView /> */}
             {/* <Tabs /> */}
             {/* <TicTacToe /> */}
-            <CartHome />
+            <BrowserRouter>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<CartHome />} />
+                    <Route path="/cart" element={<Cart />} />
+                </Routes>
+            </BrowserRouter>
         </>
     );
 };
