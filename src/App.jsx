@@ -3,14 +3,15 @@
 // import ImageSlider from "./solutions/image-slider/ImageSlider";
 // import LoadMore from "./solutions/load-more/load-more";
 
-import Cart from "./cart/Cart";
-import CartHome from "./cart/CartHome";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./cart/components/Header";
+// import Cart from "./cart/Cart";
+// import CartHome from "./cart/CartHome";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Header from "./cart/components/Header";
 // import TicTacToe from "./solutions/tictactoe/TicTacToe";
 
 // import TreeView from "./solutions/tree-view/TreeView";
 // import Tabs from "./solutions/tabs/Tabs";
+import FileUpload from "./solutions/fileUpload/fileUpload";
 
 const App = () => {
     return (
@@ -27,13 +28,14 @@ const App = () => {
             {/* <TreeView /> */}
             {/* <Tabs /> */}
             {/* <TicTacToe /> */}
-            <BrowserRouter>
+            {/* <BrowserRouter>
                 <Header />
                 <Routes>
                     <Route path="/" element={<CartHome />} />
                     <Route path="/cart" element={<Cart />} />
                 </Routes>
-            </BrowserRouter>
+            </BrowserRouter> */}
+            <FileUpload />
         </>
     );
 };
