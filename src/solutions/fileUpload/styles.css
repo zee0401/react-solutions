@@ -1,0 +1,15 @@
+.input-container {
+    height: 200px;
+    width: 100%;
+    border: 1px solid black;
+    margin-top: 100px;
+}
+
+.file-input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+}
+
+.l
