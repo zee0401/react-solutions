@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-key */
 import React, { useState } from "react";
+import Preview from "./Preview";
 
 const FileInput = () => {
     const [files, setFiles] = useState([]);
@@ -6,7 +8,11 @@ const FileInput = () => {
     const handleFileChange = (e) => {
         setFiles([...files, ...e.target.files]);
     };
-    console.log(files);
+
+    const onRemove = (name) => {
+        const filterItem = files.filter((file) => file.name !== name);
+        setFiles([...filterItem]);
+    };
 
     return (
         <>
@@ -17,6 +23,7 @@ const FileInput = () => {
                 >
                     <p>Drag and Drop File here or</p>
                     <input
+                        onMouseEnter={}
                         onChange={handleFileChange}
                         className="hidden-input"
                         multiple
@@ -29,8 +36,13 @@ const FileInput = () => {
                 </div>
 
                 <div>
-                    {files.map((file) => (
-                        <Preview file={file} />
+                    {files.map((file, index) => (
+                        <Preview
+                            key={index}
+                            fileDetail={file}
+                            onRemove={onRemove}
+                        />
+                        // <div key={index}> {file.name}</div>
                     ))}
                 </div>
             </div>
