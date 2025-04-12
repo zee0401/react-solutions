@@ -5,7 +5,7 @@ import "./styles.css";
 const fileUpload = () => {
     return (
         <>
-            <div className="input-container">
+            <div className="App">
                 <FileInput />
             </div>
         </>
