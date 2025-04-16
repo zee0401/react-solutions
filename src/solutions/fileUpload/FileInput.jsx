@@ -4,6 +4,7 @@ import Preview from "./Preview";
 
 const FileInput = () => {
     const [files, setFiles] = useState([]);
+    const [isDragging, setIsDragging] = useState(false);
 
     const handleFileChange = (e) => {
         setFiles([...files, ...e.target.files]);
@@ -14,16 +15,15 @@ const FileInput = () => {
         setFiles([...filterItem]);
     };
 
+    // const hande
+
     return (
         <>
             <div className="file-uploader">
-                <div
-                    // className={`dropzone ${isDragging ? "dragging" : ""}`}
-                    className="dropzone"
-                >
+                <div className={`dropzone ${isDragging ? "dragging" : ""}`}>
                     <p>Drag and Drop File here or</p>
                     <input
-                        onMouseEnter={}
+                        // onMouseEnter={handleMouseEnter}
                         onChange={handleFileChange}
                         className="hidden-input"
                         multiple

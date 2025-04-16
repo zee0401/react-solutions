@@ -11,7 +11,9 @@
 
 // import TreeView from "./solutions/tree-view/TreeView";
 // import Tabs from "./solutions/tabs/Tabs";
-import FileUpload from "./solutions/fileUpload/fileUpload";
+// import FileUpload from "./solutions/fileUpload/fileUpload";
+import Stepper from "./solutions/stepper-form/Stepper";
+import "./App.css";
 
 const App = () => {
     return (
@@ -35,7 +37,8 @@ const App = () => {
                     <Route path="/cart" element={<Cart />} />
                 </Routes>
             </BrowserRouter> */}
-            <FileUpload />
+            {/* <FileUpload /> */}
+            <Stepper />
         </>
     );
 };
