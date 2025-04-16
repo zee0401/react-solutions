@@ -20,6 +20,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    color: white;
 }
 
 .step-line {
@@ -32,6 +33,9 @@
 
 .active {
     background-color: blue;
+}
+.active-text {
+    color: blue;
 }
 
 .btn {

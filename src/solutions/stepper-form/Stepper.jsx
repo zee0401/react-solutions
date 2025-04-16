@@ -23,24 +23,40 @@ const steps = [
 const Stepper = () => {
     const [currentStep, setCurrentStep] = useState(0);
 
-    function handleContinue() {}
+    function handleContinue() {
+        if (currentStep >= steps.length - 1) {
+            return;
+        }
+        setCurrentStep((prev) => prev + 1);
+    }
 
-    function handleBack() {}
+    function handleBack() {
+        if (currentStep === 0) {
+            return;
+        }
+        setCurrentStep((prev) => prev - 1);
+    }
     return (
         <>
             <div className="stepper-container">
                 <div>
                     {steps.map((step, i) => (
                         <div key={i} className="step-box">
-                            <div className="step-count">
+                            <div
+                                className={`step-count ${
+                                    i === currentStep ? `active` : ""
+                                }`}
+                            >
                                 {i + 1}
-                                <div
-                                    className={`active ${
-                                        i < steps.length - 1 ? `step-line` : ""
-                                    }`}
-                                ></div>
+                                {i < steps.length - 1 && (
+                                    <div
+                                        className={`step-line ${
+                                            i < currentStep ? "active" : ""
+                                        }`}
+                                    ></div>
+                                )}
                             </div>
-                            <div>{step.label}</div>
+                            <div className={``}>{step.label}</div>
                         </div>
                     ))}
                 </div>
@@ -48,13 +64,21 @@ const Stepper = () => {
                     {/* {steps.map((step, i) => (
                         <div key={step.component}>{step.component}</div>
                     ))} */}
-                    {steps[0].component}
+                    {steps[currentStep].component}
                 </div>
                 <div className="btn-container">
-                    <button className="btn" onClick={handleBack}>
+                    <button
+                        className="btn"
+                        disabled={currentStep === 0 ? true : false}
+                        onClick={handleBack}
+                    >
                         Back
                     </button>
-                    <button className="btn" onClick={handleContinue}>
+                    <button
+                        className="btn"
+                        disabled={currentStep === steps.length - 1}
+                        onClick={handleContinue}
+                    >
                         Continue
                     </button>
                 </div>
